@@ -9,7 +9,7 @@ class Scaled_DotProduct(nn.Module):
     def __init__(self):
         super().__init__()
 
-    def forward(self, q, k, v, scale=None, maks=None):
+    def forward(self, q, k, v, scale=None, mask=None):
         '''
         Args:
             q, k, v: (batch_size, num_heads, seq_len, d_head)
@@ -22,7 +22,7 @@ class Scaled_DotProduct(nn.Module):
         attention_score = (q @ k_T) / scale # (batch, n_heads, seq_len, seq_len)
         # Step 2: apply masking if applicable
         if mask is not None:
-            attention_score(mask) = 1e-10
+            attention_score[mask] = 1e-10
         # Step 3: apply softmax to redistribute within (0, 1)
         attention_score = torch.softmax(attention_score, dim=-1)
         # Step 4: Weighted sum of values matrix

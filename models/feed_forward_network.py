@@ -15,7 +15,7 @@ class FFN(nn.Module):
 
         self.ffn = nn.Sequential(
             nn.Linear(d_model, d_hidden),
-            nn.GeLU(),
+            nn.GELU(),
             nn.Dropout(p=p_dropout),
             nn.Linear(d_hidden, d_model)
         )

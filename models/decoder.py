@@ -76,7 +76,7 @@ class Decoder(nn.Module):
         super().__init__()
 
         # Create position-encoded embedding
-        self.input_emb = GPTEmbedding(vocab_size, d_model, max_len, p_dropout)
+        self.input_emb = GPTEmbedding(vocab_size, max_len, d_model, p_dropout)
         self.dropout = nn.Dropout(p=p_dropout)
         
         # Create decoder blocks
