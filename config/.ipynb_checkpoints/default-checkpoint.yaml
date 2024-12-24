@@ -1,0 +1,16 @@
+experiment:
+  name: "my_gpt2_experiment"
+  output_dir: "./checkpoints"
+
+train:
+  epochs: 10
+  batch_size: 32
+  learning_rate: 2.5e-4
+  warmup_steps: 1000
+
+model:
+  num_blocks: 12
+  num_heads: 12
+  d_model: 768
+  vocab_size: 
+  max_seq_len: 100
